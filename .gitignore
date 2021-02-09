@@ -1,0 +1,9 @@
+Not to checkin - git hub lib/
+**/.metadata
+.metadata/
+/.metadata/
+obj
+bin
+.vs
+appsettings.json
+*.db
