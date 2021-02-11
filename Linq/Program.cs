@@ -20,7 +20,10 @@ namespace Linq
       //Learning streaming and its usage
       // print10RandomNumbers();
 
-      ProcessCars();
+      //ProcessCars();
+      //ProcesCarAndManufacturer();
+      ProcessCarAndManufact_Grouping();
+
       Console.WriteLine("Press any key to continue");
       Console.ReadLine();
     }
@@ -53,8 +56,27 @@ namespace Linq
       //CarQueries.PrintCarsRating();
       //CarQueries.PrintCarsRatingQuerySyntax();
 
-      CarQueries.PrintCarsStatistics();
+      //CarQueries.PrintCarsStatistics();
+      //CarQueries.PrintCarNameUsingSelectMany();
     }
+
+    private static void ProcesCarAndManufacturer()
+    {
+      //CarManufacturerQueries.MostEfficientCarsWithManufHeadQuarter();
+      //CarManufacturerQueries.MostEfficientCarsWithManufHeadQuarter_ExMethod();
+      //CarManufacturerQueries.MostEfficientCarsWithManufHeadQuarter_ExMethodWithSelect();
+      //CarManufacturerQueries.MostEfficientCarsWithManufHeadQuarter_CompositeJoin();
+
+
+    }
+
+    private static void ProcessCarAndManufact_Grouping()
+    {
+      //CarManufacturerQueries.CountCarsPerManufacturer();
+      //CarManufacturerQueries.ShowCarsPerManufacturer();
+      CarManufacturerQueries.ShowCarsPerManufacturer_ExtensionMethod();
+    }
+
 
   }
 }

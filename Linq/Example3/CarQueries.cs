@@ -9,13 +9,13 @@ namespace Linq.Example3
   public class CarQueries
   {
 
-    //extension method syntex
+    //extension method syntax
     public static List<Car> ProcessCars1(string path)
     {
       var query = File.ReadAllLines(path).
                       Skip(1).
                       Where(line => line.Length > 1).
-                      Select(CarQueries.Parser);
+                      Select(line => Car.Parse(line));
 
       return query.ToList();
     }
@@ -32,22 +32,22 @@ namespace Linq.Example3
 
     public static List<Car> ProcessCars3(string path)
     {
-      var query = File.ReadAllLines(path).Skip(1).Where(line => line.Length > 1).Select(CarQueries.Parser);
+      var query = File.ReadAllLines(path).Skip(1).Where(line => line.Length > 1).Select(Car.Parse);
 
       return query.ToList();
     }
 
-    //query syntex
+    //query syntax
     public static List<Car> ProcessCars(string path)
     {
       var query = from line in File.ReadLines(path).Skip(1)
                   where line.Length > 1
-                  select CarQueries.Parser(line);
+                  select Car.Parse(line);
 
       return query.ToList();
     }
 
-    private static List<Car> GetCars()
+    public static List<Car> GetCars()
     {
       string path = @"D:\microsoft_2021_target\AdvancedProgramming_2021\DataFiles\fuel.csv";
       List<Car> cars = CarQueries.ProcessCars2(path);
@@ -106,20 +106,17 @@ namespace Linq.Example3
     }
 
 
-    public static Car Parser(string data)
+    //Showing usage of SelectMany
+    //Select many transform a collection of collections, a sequence of sequences, into a single sequence.
+    public static void PrintCarNameUsingSelectMany()
     {
-      string[] columns = data.Split(",");
-      return new Car
+      List<Car> cars = GetCars();
+      var result = cars.Take(5).SelectMany(c => c.Name).OrderBy(c => c);
+      foreach (var item in result)
       {
-        Year = int.Parse(columns[0]),
-        Manufacturer = columns[1],
-        Name = columns[2],
-        Displacement = double.Parse(columns[3]),
-        Cylinders = int.Parse(columns[4]),
-        City = int.Parse(columns[5]),
-        Highway = int.Parse(columns[6]),
-        Combined = int.Parse(columns[7])
-      };
+        Console.WriteLine(item);
+      }
     }
+   
   }
 }
