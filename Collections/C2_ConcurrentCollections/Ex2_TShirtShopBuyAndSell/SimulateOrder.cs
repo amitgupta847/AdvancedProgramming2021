@@ -1,4 +1,4 @@
-﻿using Collections.C2_ConcurrentCollections.TShirtShop;
+﻿using Collections.C2_ConcurrentCollections.Shop_Common;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Collections.C2_ConcurrentCollections
+namespace Collections.C2_ConcurrentCollections.Ex2_TShirtShopBuyAndSell
 {
   public class SimulateShop
   {

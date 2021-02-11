@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Collections.C2_ConcurrentCollections.Shop_Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Collections.C2_ConcurrentCollections.TShirtShop
+namespace Collections.C2_ConcurrentCollections.Ex1_TShirtShop
 {
   public class SalesPerson
   {

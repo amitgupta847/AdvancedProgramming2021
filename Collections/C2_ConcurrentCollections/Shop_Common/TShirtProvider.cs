@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Collections.C2_ConcurrentCollections.TShirtShop
+namespace Collections.C2_ConcurrentCollections.Shop_Common
 {
   public static class TShirtProvider
   {
