@@ -1,4 +1,5 @@
 ﻿using Collections.C1_BeginningCollections;
+using Collections.C2_ConcurrentCollections;
 using System;
 using System.IO;
 using System.Reflection;
@@ -9,21 +10,31 @@ namespace Collections
   {
     static void Main(string[] args)
     {
+      //PlayWithFiles();
 
-      string filePath = GetPopulationCSVFilePath();
-      // Arrays.ReadCountries(filePath);
-      //Lists.ReadCountries(filePath);
-      //Lists.ReadCountriesInBatches(filePath);
-      Lists.ReadCountriesInReverseOrderInBatches(filePath);
+      SimulateShop.Start();
 
       Console.WriteLine("Press any key to quit!");
       Console.ReadLine();
+    }
+
+    public static void PlayWithOrders()
+    {
     }
 
 
 
 
 
+
+      public static void PlayWithFiles()
+    {
+      string filePath = GetPopulationCSVFilePath();
+      // Arrays.ReadCountries(filePath);
+      //Lists.ReadCountries(filePath);
+      //Lists.ReadCountriesInBatches(filePath);
+      //Lists.ReadCountriesInReverseOrderInBatches(filePath);
+    }
 
     private static string GetPopulationCSVFilePath()
     {
