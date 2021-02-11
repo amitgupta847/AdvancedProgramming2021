@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Collections.C2_ConcurrentCollections
 {
-  public class SimulateShop
+  public class SimulateOrder1
   {
 
     //Entry function 
@@ -29,13 +29,16 @@ namespace Collections.C2_ConcurrentCollections
 
     }
 
-    private static Object syncRoot = new object();
+   // private static Object syncRoot = new object();
 
     public static void PlaceOrders(ConcurrentQueue<string> orders, string customerName, int nOrders)
     {
       for (int i = 1; i <= nOrders; i++)
       {
-        Thread.Sleep(1);   //its in milliseconds.   1 = 1/1000 seconds
+        //Thread.Sleep(1);   //its in milliseconds.   1 = 1/1000 seconds
+        
+        Thread.Sleep(new TimeSpan(1)); // its in nano seconds    1 = 1/1000 millisecond    way shorter
+
         string orderName = $"{customerName} wants t-shirt {i}";
         orders.Enqueue(orderName);
       }
