@@ -3,6 +3,7 @@ using Linq.Example2;
 using System;
 using System.Linq;
 using System.Collections.Generic;
+using Linq.Example3;
 
 namespace Linq
 {
@@ -17,9 +18,9 @@ namespace Linq
       //MoviesAndLINQ();
 
       //Learning streaming and its usage
-      print10RandomNumbers();
+      // print10RandomNumbers();
 
-
+      ProcessCars();
       Console.WriteLine("Press any key to continue");
       Console.ReadLine();
     }
@@ -40,11 +41,20 @@ namespace Linq
 
     private static void print10RandomNumbers()
     {
-      var query = MyLinq.Random().Where(num=> num>0.5).Take(10);
+      var query = MyLinq.Random().Where(num => num > 0.5).Take(10);
       foreach (double number in query)
       {
         Console.WriteLine($"{number,5:N2}");
       }
     }
+
+    private static void ProcessCars()
+    {
+      //CarQueries.PrintCarsRating();
+      //CarQueries.PrintCarsRatingQuerySyntax();
+
+      CarQueries.PrintCarsStatistics();
+    }
+
   }
 }

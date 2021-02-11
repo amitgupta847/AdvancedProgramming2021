@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOPs_And_DesignPatterns", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataFiles", "DataFiles", "{795DEE7B-4619-4BBF-AE9D-2B320ABBD5A7}"
 	ProjectSection(SolutionItems) = preProject
+		DataFiles\fuel.csv = DataFiles\fuel.csv
+		DataFiles\manufacturers.csv = DataFiles\manufacturers.csv
 		DataFiles\Pop by Largest Final.csv = DataFiles\Pop by Largest Final.csv
 	EndProjectSection
 EndProject
