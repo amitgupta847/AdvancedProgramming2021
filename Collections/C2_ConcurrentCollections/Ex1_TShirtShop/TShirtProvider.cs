@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Collections.C2_ConcurrentCollections.Ex2_TShirtShopBuyAndSell
+namespace Collections.C2_ConcurrentCollections.Ex1_TShirtShop
 {
   public static class TShirtProvider
   {
@@ -22,13 +22,5 @@ namespace Collections.C2_ConcurrentCollections.Ex2_TShirtShopBuyAndSell
       new TShirt("ps", "Pluralsight", 60000),
       new TShirt("pslive", "Pluralsight Live", 60000)
     );
-
-    public static ImmutableDictionary<string, TShirt> AllShirtsByCode { get; } = AllShirts.ToImmutableDictionary(x => x.Code);
-
-    public static TShirt SelectRandomShirt()
-    {
-      int selectedIndex = Rnd.NextInt(AllShirts.Length);
-      return AllShirts[selectedIndex];
-    }
   }
 }

@@ -22,38 +22,33 @@ namespace Collections.C2_ConcurrentCollections.Ex2_TShirtShopBuyAndSell
       DateTime start = DateTime.Now;
       while (DateTime.Now - start < workDay)
       {
-        var result = ServeCustomer(controller);
-        if (result.status != null)
-          Console.WriteLine($"{Name}:  {result.status}");
-
-        if (!result.shirtsInStock)
-          break;
+        string msg = ServeCustomer(controller);
+        if (msg != null)
+          Console.WriteLine($"{Name}: {msg}");
       }
     }
 
-    public (bool shirtsInStock, string status) ServeCustomer(StockController controller)
+    public string ServeCustomer(StockController controller)
     {
-      var result = controller.SelectRandomShirt();
-      if (result.result == SelectResult.NoStockLeft)
-        return (false, "All shirts sold");
-      else if (result.result == SelectResult.ChosenShirtSold)
-        return (true, "Can't show shirt to customer - already sold");
+      Thread.Sleep(Rnd.NextInt(5));
+      TShirt shirt = TShirtProvider.SelectRandomShirt();
+      string code = shirt.Code;
 
-
-      Thread.Sleep(Rnd.NextInt(30));
-      TShirt shirt = result.shirt;
-      //customer chooses to buy with only 20% probability
-      if (Rnd.TrueWithProb(0.2))
+      bool custSells = Rnd.TrueWithProb(1.0 / 6.0);
+      if (custSells)
       {
-        bool isSold = controller.Sell(shirt.Code);
-
-        if (isSold)
-          return (true, $"Sold {shirt.Name}");
-        else
-          return (true, $"Can't sell {shirt.Name}: Already Sold");
+        int quantity = Rnd.NextInt(9) + 1;
+        controller.BuyShirts(code, quantity);
+        return $"Bought {quantity} of {shirt}";
       }
-
-      return (true, null);
+      else
+      {
+        bool success = controller.TrySellShirt(code);
+        if (success)
+          return $"Sold {shirt}";
+        else
+          return $"Couldn't sell {shirt}: Out of stock";
+      }
     }
 
   }

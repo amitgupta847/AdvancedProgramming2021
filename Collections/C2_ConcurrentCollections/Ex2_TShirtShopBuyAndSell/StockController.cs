@@ -11,65 +11,56 @@ namespace Collections.C2_ConcurrentCollections.Ex2_TShirtShopBuyAndSell
 {
   public class StockController
   {
-    private ConcurrentDictionary<string, TShirt> _stockMap;
+    private Dictionary<string, int> _stockMap = new Dictionary<string, int>();
 
-    public StockController(IEnumerable<TShirt> shirts)
+    int _totalQuantityBought;
+    int _totalQuantitySold;
+
+    public StockController() //IEnumerable<TShirt> shirts
     {
-      _stockMap = new ConcurrentDictionary<string, TShirt>(shirts.ToDictionary(item => item.Code));
+      //_stockMap = new ConcurrentDictionary<string, TShirt>(shirts.ToDictionary(item => item.Code));
     }
 
-    public bool Sell(string code)
+    public void BuyShirts(string code, int quantityToBuy)
     {
-      return _stockMap.TryRemove(code, out TShirt shirtRemoved);
+      if (!_stockMap.ContainsKey(code))
+        _stockMap.Add(code, 0);
+
+      _stockMap[code] = _stockMap[code] + quantityToBuy;
+      _totalQuantityBought = _totalQuantityBought + quantityToBuy;
+
     }
 
-    public (SelectResult result, TShirt shirt) SelectRandomShirt()
+    public bool TrySellShirt(string code)
     {
-      var keys = _stockMap.Keys.ToList();
-
-      if (keys.Count == 0)
-        return (SelectResult.NoStockLeft, null);   // shirts sold
-
-      //Method sleeps for a short time chosen randomly up to 10 ms.
-      //You can think of that as the customer making up his mind which shirt he wants to browse, 
-      //but the real purpose is to make the thread timings a bit more realistic because in real life, 
-      //most apps would be doing far more processing. After sleeping, the code simply randomly selects one of the keys in the list and looks up and returns the T‑shirt with that code.
-      Thread.Sleep(Rnd.NextInt(10));
-
-      string selectedCode = keys[Rnd.NextInt(keys.Count)];
-
-      if (_stockMap.TryGetValue(selectedCode, out TShirt shirt))
-        return (SelectResult.Success, shirt);
+      if (_stockMap.TryGetValue(code, out int stock) && stock > 0)
+      {
+        --_stockMap[code];
+        ++_totalQuantitySold;
+        return true;
+      }
       else
-        return (SelectResult.ChosenShirtSold, null);
-
-      //return _stockMap[selectedCode];
+        return false;
     }
-
-
-    //Below code is not thread save at when we try to access the dictionary, the item might have removed
-    //public TShirt SelectRandomShirt()
-    //{
-    //  var keys = _stockMap.Keys.ToList();
-
-    //  if (keys.Count == 0)
-    //    return null;   // shirts sold
-
-    //  //Method sleeps for a short time chosen randomly up to 10 ms.
-    //  //You can think of that as the customer making up his mind which shirt he wants to browse, 
-    //  //but the real purpose is to make the thread timings a bit more realistic because in real life, 
-    //  //most apps would be doing far more processing. After sleeping, the code simply randomly selects one of the keys in the list and looks up and returns the T‑shirt with that code.
-    //  Thread.Sleep(Rnd.NextInt(10));
-
-    //  string selectedCode = keys[Rnd.NextInt(keys.Count)];
-    //  return _stockMap[selectedCode];
-    //}
 
     public void DisplayStock()
     {
-      Console.WriteLine($"\r\n{_stockMap.Count} items left in stock:");
-      foreach (TShirt shirt in _stockMap.Values)
-        Console.WriteLine(shirt);
+      Console.WriteLine("Stock levels by item:");
+      foreach (TShirt shirt in TShirtProvider.AllShirts)
+      {
+        _stockMap.TryGetValue(shirt.Code, out int stockLevel);
+        Console.WriteLine($"{shirt.Name,-30}: {stockLevel}");
+      }
+
+      int totalStock = _stockMap.Values.Sum();
+      Console.WriteLine($"\r\nBought = {_totalQuantityBought}");
+      Console.WriteLine($"Sold   = {_totalQuantitySold}");
+      Console.WriteLine($"Stock  = {totalStock}");
+      int error = totalStock + _totalQuantitySold - _totalQuantityBought;
+      if (error == 0)
+        Console.WriteLine("Stock levels match");
+      else
+        Console.WriteLine($"Error in stock level: {error}");
     }
   }
 
