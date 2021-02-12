@@ -15,26 +15,38 @@ namespace Collections.C2_ConcurrentCollections.Ex2_TShirtShopBuyAndSell
     //Entry function 
     public static void Start()
     {
-      StockController controller = new StockController();
+			StockController controller = new StockController();
+			TimeSpan workDay = new TimeSpan(0, 0, 0, 0, 500);
+			StaffRecords staffLogs = new StaffRecords();
+			LogTradesQueue tradesQueue = new LogTradesQueue(staffLogs);
 
+			SalesPerson[] staff =
+			{
+				new SalesPerson("Sahil"),
+				new SalesPerson("Julie"),
+				new SalesPerson("Kim"),
+				new SalesPerson("Chuck")
+			};
+			List<Task> salesTasks = new List<Task>();
+			foreach (SalesPerson person in staff)
+			{
+				salesTasks.Add(
+					Task.Run(() => person.Work(workDay, controller, tradesQueue)));
+			}
 
-      //This TimeSpan, workDay, tells us how long each sales person will work for. 
-      TimeSpan workDay = new TimeSpan(0, 0, 0, 0, 500);
+			Task[] loggingTasks =
+			{
+				Task.Run(() => tradesQueue.MonitorAndLogTrades()),
+				Task.Run(() => tradesQueue.MonitorAndLogTrades())
+			};
 
-      SalesPerson kim = new SalesPerson("Tim");
-      SalesPerson sahil = new SalesPerson("Koffi");
-      SalesPerson julia = new SalesPerson("Julia");
-      SalesPerson michael = new SalesPerson("Michael");
+			Task.WaitAll(salesTasks.ToArray());
+			tradesQueue.SetNoMoreTrades();
+			Task.WaitAll(loggingTasks);
 
-      Task task1 = Task.Run(() => kim.Work(workDay, controller));
-      Task task2 = Task.Run(() => sahil.Work(workDay, controller));
-      Task task3 = Task.Run(() => julia.Work(workDay, controller));
-      Task task4 = Task.Run(() => michael.Work(workDay, controller));
-
-      Task.WaitAll(task1, task2, task3, task4);
-
-      controller.DisplayStock();
-    }
+			controller.DisplayStock();
+			staffLogs.DisplayCommissions(staff);
+		}
   }
 
 }
