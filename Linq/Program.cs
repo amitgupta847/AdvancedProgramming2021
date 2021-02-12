@@ -4,6 +4,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Linq.Example3;
+using Linq.FromNutShell;
 
 namespace Linq
 {
@@ -11,6 +12,8 @@ namespace Linq
   {
     static void Main(string[] args)
     {
+      LINQFromNutShell();
+
       //Example 1
       //filesAndLINQ();
 
@@ -22,12 +25,16 @@ namespace Linq
 
       //ProcessCars();
       //ProcesCarAndManufacturer();
-      ProcessCarAndManufact_Grouping();
+      //ProcessCarAndManufact_Grouping();
 
       Console.WriteLine("Press any key to continue");
       Console.ReadLine();
     }
 
+    private static void LINQFromNutShell()
+    {
+      ConversionMethods.StartMethod();
+    }
 
     private static void filesAndLINQ()
     {

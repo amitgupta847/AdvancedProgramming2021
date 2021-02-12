@@ -16,7 +16,7 @@ namespace Linq.Example2
     {
       get
       {
-        Console.WriteLine($"Returning {_year} for {Title}");
+        //Console.WriteLine($"Returning {_year} for {Title}");
         return _year;
 
       }
@@ -26,7 +26,10 @@ namespace Linq.Example2
       }
     }
 
-
+    public override string ToString()
+    {
+      return $"Movie name is  { Title } and was released in {Year}";
+    }
 
     public static List<Movie> getMovies()
     {
