@@ -16,22 +16,22 @@ namespace Collections.C2_ConcurrentCollections.Ex2_TShirtShopBuyAndSell
     public static void Start()
     {
       StockController controller = new StockController();
-      
+
 
       //This TimeSpan, workDay, tells us how long each sales person will work for. 
       TimeSpan workDay = new TimeSpan(0, 0, 0, 0, 500);
-      SalesPerson kim = new SalesPerson("Kim");
-      // SalesPerson sahil = new SalesPerson("Sahil");
-      // SalesPerson chuck = new SalesPerson("Chuck");
 
-      kim.Work(workDay, controller);
+      SalesPerson kim = new SalesPerson("Tim");
+      SalesPerson sahil = new SalesPerson("Koffi");
+      SalesPerson julia = new SalesPerson("Julia");
+      SalesPerson michael = new SalesPerson("Michael");
 
-      //Task task1 = Task.Run(() => kim.Work(workDay, controller));
-      // Task task2 = Task.Run(() => sahil.Work(workDay, controller));
-      //Task task3 = Task.Run(() => chuck.Work(workDay, controller));
+      Task task1 = Task.Run(() => kim.Work(workDay, controller));
+      Task task2 = Task.Run(() => sahil.Work(workDay, controller));
+      Task task3 = Task.Run(() => julia.Work(workDay, controller));
+      Task task4 = Task.Run(() => michael.Work(workDay, controller));
 
-
-      // Task.WaitAll(task1, task2, task3);
+      Task.WaitAll(task1, task2, task3, task4);
 
       controller.DisplayStock();
     }

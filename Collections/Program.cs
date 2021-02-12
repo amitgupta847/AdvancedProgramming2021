@@ -20,16 +20,8 @@ namespace Collections
       Console.ReadLine();
     }
 
-    public static void PlayWithOrders()
-    {
-    }
 
-
-
-
-
-
-      public static void PlayWithFiles()
+    public static void PlayWithFiles()
     {
       string filePath = GetPopulationCSVFilePath();
       // Arrays.ReadCountries(filePath);
