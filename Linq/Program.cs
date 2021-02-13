@@ -12,7 +12,7 @@ namespace Linq
   {
     static void Main(string[] args)
     {
-      LINQFromNutShell();
+      //LINQFromNutShell();
 
       //Example 1
       //filesAndLINQ();

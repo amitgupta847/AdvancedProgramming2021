@@ -14,7 +14,7 @@ namespace Linq.FromNutShell
       // casting();
       //  OfTypeAndCastUsage();
 
-      ToDict_Usage();
+      //ToDict_Usage();
     }
 
     public static void casting()
@@ -90,12 +90,9 @@ namespace Linq.FromNutShell
       {
         Console.WriteLine(ex.Message);
         Console.WriteLine("For the given Key, Each element must evaluate to unique value");
-
       }
 
-      
-
-      // new Movie { Title="The Dark Knight", Rating=8.9f, Year=2008},
+     // new Movie { Title="The Dark Knight", Rating=8.9f, Year=2008},
     }
 
   }
