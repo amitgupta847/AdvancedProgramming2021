@@ -11,15 +11,15 @@ namespace Collections
   {
     static void Main(string[] args)
     {
-      Arrays.StartMethod();
+      //Arrays.StartMethod();
 
-      // TicTacToeStart.StartGame();
+      TicTacToeStart.StartGame();
 
       //PlayWithFiles();
 
       //Dictionaries.StartMethod();
 
-      HashSet.StartMethod();
+      //HashSet.StartMethod();
 
       //SimulateOrder1.Start();
       //C2_ConcurrentCollections.Ex1_TShirtShop.SimulateShop.Start();

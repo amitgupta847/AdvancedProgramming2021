@@ -15,9 +15,12 @@ namespace Threading.C1_MultiThreading
     {
       // TaskUsage();
       // TaskContinuationUsage();
-      //TaskWaitingUsage();
+      // TaskWaitingUsage();
 
-      TestTaskWrite();
+      // TestTaskWrite();
+      // TestException();
+      // TestAggregateException();
+      NestedTasks();
     }
 
 
@@ -147,10 +150,101 @@ namespace Threading.C1_MultiThreading
         string content = Encoding.Unicode.GetString(data, 0, t.Result);
         Console.WriteLine($"Read Completed. Content is: {content}");
       });
+    }
 
+
+    //Learning Exception Handling
+    public static void TestException()
+    {
+      var t1 = Task.Run(() => method());
+      try
+      {
+        //best advice to handle exceptions for the tasks where main thread do not wait is to configure continuation and observe IsFaulted or use the TaskContinuationOptions as Only faulted
+        //Note: here below t1 is waiting, still we configured the Continuation for knowledge purpose
+        t1.ContinueWith((t1) =>
+       {
+         if (t1.IsFaulted)
+           Console.WriteLine("I am faulted");
+         else if (t1.IsCompleted)
+           Console.WriteLine("I am completed succesfully");
+       });
+      
+        t1.Wait();  // if there was any exception in the method that task performed, that will be wrapped in Aggregate exception and will be throw at this point
+
+      }
+      catch (Exception ex)
+      {
+        Console.WriteLine(ex.GetType().ToString());
+        Console.WriteLine(ex.Message);
+        
+        //Here instead of general Exception, you could configure to recieve only AggregateException and flatten it to see all the exceptions in it.
+      }
+    }
+
+    public static void method()
+    {
+      throw new ArgumentException();
+    }
+
+    //Example 2: Lets create a task which further creates 3 tasks and all those throws an exception.
+    private static void TestAggregateException()
+    {
+      var parent = Task.Factory.StartNew(() =>
+      {
+        //We will throw 3 exceptions at once using 3 child tasks:
+        int[] numbers = { 0 };
+        var childFactory = new TaskFactory(TaskCreationOptions.AttachedToParent, TaskContinuationOptions.None);
+
+        childFactory.StartNew(() => 5 / numbers[0]); // divide by zero
+        childFactory.StartNew(() => numbers[1]); // index out of range
+        childFactory.StartNew(() => throw null); //null reference
+      });
+
+      try
+      {
+        parent.Wait();
+      }
+      catch (AggregateException aex)
+      {
+        //here we are showing the usage of handle by handling 2 of the exception and finally null reference exception will be thrown;
+        aex.Flatten().Handle(ex =>
+        {
+          if (ex is DivideByZeroException)
+          {
+            Console.WriteLine("Divide by zero");
+            return true;
+          }
+          if (ex is IndexOutOfRangeException)
+          {
+            Console.WriteLine("Index out range");
+            return true;
+          }
+
+          return false;
+        });
+      }
 
     }
+
+
+
+    //Nested and child tasks
+    private static void NestedTasks()
+    {
+     Task.Factory.StartNew(() => {
+
+        Task nested= Task.Factory.StartNew(()=> Console.WriteLine("hello i am child task"));
+      }).Wait();
+
+
+     // parent.Wait();
+    }
+
   }
+
+
+
+
 
 
   class WebClientWrapper
