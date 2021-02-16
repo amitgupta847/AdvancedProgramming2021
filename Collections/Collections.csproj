@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Update="C1_BeginningCollections\Pop by Largest Final.csv">
+    <None Update="C1_Collections\Pop by Largest Final.csv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

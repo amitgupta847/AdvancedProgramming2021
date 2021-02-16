@@ -1,5 +1,5 @@
-﻿using Collections.C1_BeginningCollections;
-using Collections.C1_BeginningCollections.TicTacToe;
+﻿using Collections.C1_Collections;
+using Collections.C1_Collections.TicTacToe;
 using Collections.C2_ConcurrentCollections;
 using System;
 using System.IO;

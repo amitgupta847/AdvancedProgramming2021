@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Collections.C1_BeginningCollections
+namespace Collections.C1_Collections
 {
   public class Country
   {

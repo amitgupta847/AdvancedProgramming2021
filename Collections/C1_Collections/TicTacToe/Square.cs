@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Collections.C1_BeginningCollections.TicTacToe
+namespace Collections.C1_Collections.TicTacToe
 {
   public class Square
   {

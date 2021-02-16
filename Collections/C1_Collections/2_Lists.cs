@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Collections.C1_BeginningCollections
+namespace Collections.C1_Collections
 {
   class Lists
   {
@@ -26,7 +26,7 @@ namespace Collections.C1_BeginningCollections
     {
       CSVReader reader = new CSVReader(filePath);
 
-      List<Country> countries = reader.ReadAllCountries();
+      IList<Country> countries = reader.ReadAllCountries();
 
       Console.WriteLine("Enter the number of countries to display> 10");
       int number = int.Parse(Console.ReadLine());
