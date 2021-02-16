@@ -21,6 +21,7 @@ namespace Linq
     //Learning: understanding how LINQ works using yield
     public static IEnumerable<T> Filter<T>(this IEnumerable<T> source, Func<T, bool> predicate)
     {
+      
       foreach (var item in source)
       {
         if (predicate(item))

@@ -16,13 +16,14 @@ namespace Linq.Example1
     {
       DirectoryInfo dir = new DirectoryInfo(path);
       var query = dir.GetFiles().OrderByDescending(f => f.Length).Take(5);
+      
+      //Amit- since there is a order by clause, so query will execute for all the files and then it will take  among that.
       foreach (var file in query)
       {
         Console.WriteLine($"{file.Name,-20} : {file.Length,10:N0}");
       }
 
     }
-
 
 
     public static void ShowLargeFilesWithoutLINQ(string path)

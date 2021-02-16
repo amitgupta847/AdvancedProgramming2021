@@ -1,4 +1,5 @@
 ﻿using Collections.C1_BeginningCollections;
+using Collections.C1_BeginningCollections.TicTacToe;
 using Collections.C2_ConcurrentCollections;
 using System;
 using System.IO;
@@ -10,11 +11,19 @@ namespace Collections
   {
     static void Main(string[] args)
     {
+      Arrays.StartMethod();
+
+      // TicTacToeStart.StartGame();
+
       //PlayWithFiles();
+
+      //Dictionaries.StartMethod();
+
+      HashSet.StartMethod();
 
       //SimulateOrder1.Start();
       //C2_ConcurrentCollections.Ex1_TShirtShop.SimulateShop.Start();
-      C2_ConcurrentCollections.Ex2_TShirtShopBuyAndSell.SimulateShop.Start();
+      //C2_ConcurrentCollections.Ex2_TShirtShopBuyAndSell.SimulateShop.Start();
 
       Console.WriteLine("Press any key to quit!");
       Console.ReadLine();

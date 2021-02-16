@@ -12,10 +12,11 @@ namespace Linq
   {
     static void Main(string[] args)
     {
+  
       //LINQFromNutShell();
 
       //Example 1
-      //filesAndLINQ();
+      filesAndLINQ();
 
       //Example2
       //MoviesAndLINQ();
@@ -38,7 +39,7 @@ namespace Linq
 
     private static void filesAndLINQ()
     {
-      Files.ShowLargeFilesWithoutLINQ(@"C:\Windows");
+      //Files.ShowLargeFilesWithoutLINQ(@"C:\Windows");
       Files.ShowLargeFilesWithLINQ(@"C:\Windows");
     }
 

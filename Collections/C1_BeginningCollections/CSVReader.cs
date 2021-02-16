@@ -43,7 +43,7 @@ namespace Collections.C1_BeginningCollections
       {
         //read the header and ignore it so that stream points to next line.
         sr.ReadLine();
-
+        
         for (int i = 0; i < nCountries; i++)
         {
           string csvLine = sr.ReadLine();

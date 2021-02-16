@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Collections.C1_BeginningCollections
 {
-  class Country
+  public class Country
   {
     public string Name { get; }
     public string Code { get; }
@@ -19,6 +20,29 @@ namespace Collections.C1_BeginningCollections
       Code = code;
       Region = region;
       Population = population;
+    }
+
+    public override string ToString()
+    {
+      return $"Name: {Name}, Code: {Code}";
+    }
+  }
+
+  public class CountryEqualityComparor : IEqualityComparer<Country>, IComparer<Country>
+  {
+    public int Compare(Country x, Country y)
+    {
+      return x.Name.CompareTo(y.Name);
+    }
+
+    public bool Equals(Country x, Country y)
+    {
+      return x.Name == y.Name;
+    }
+
+    public int GetHashCode([DisallowNull] Country obj)
+    {
+      return StringComparer.OrdinalIgnoreCase.GetHashCode(obj.Name);
     }
   }
 }
