@@ -12,8 +12,6 @@ using C2_TPL_FinStockData;
 
 namespace Threading.C2_TPL_FinStockData
 {
-
-
   class DownloadData_TPL
   {
     /// <summary>
@@ -21,11 +19,9 @@ namespace Threading.C2_TPL_FinStockData
     /// </summary>
     static DownloadData_TPL()
     {
-      // 
       // When we cancel the async requests, exceptions are thrown --- so register a handler to
       // "observe" these exceptions (otherwise we'll get exceptions during garbage collection
       // of the Task objects).
-      //
       TaskScheduler.UnobservedTaskException += new EventHandler<UnobservedTaskExceptionEventArgs>(
         TaskUnobservedException_Handler);
     }
@@ -45,7 +41,7 @@ namespace Threading.C2_TPL_FinStockData
     {
       int Description;
       return false;  //amit i defaulted to send false for internet conection inorder to read cache files..
-      		//	return InternetGetConnectedState(out Description, 0);
+                     //	return InternetGetConnectedState(out Description, 0);
     }
 
 
@@ -56,10 +52,8 @@ namespace Threading.C2_TPL_FinStockData
     /// <returns></returns>
     public static StockData GetHistoricalData(string symbol, int numYearsOfHistory)
     {
-      //
       // If we have an internet connection, download data live, otherwise check the cache
       // and see if we have the data available...
-      //
       if (IsConnectedToInternet())
         return GetDataFromInternet(symbol, numYearsOfHistory);
       else
@@ -69,7 +63,6 @@ namespace Threading.C2_TPL_FinStockData
 
     /// <summary>
     /// Tries to read stock data from file cache, presumably because internet is not available.
-    /// 
     /// NOTE: file cache is a sub-folder "\cache" under the .exe.  The assumption is that it
     /// holds CSV files from http://finance.yahoo.com.
     /// </summary>
@@ -92,7 +85,6 @@ namespace Threading.C2_TPL_FinStockData
       FileWebRequest FileRequestObject = (FileWebRequest)FileWebRequest.Create(url);
       WebResponse Response = FileRequestObject.GetResponse();
 
-      //
       // cached finance.yahoo.com, data format:
       //
       //   Date (YYYY-MM-DD),Open,High,Low,Close,Volume,Adj Close
@@ -130,9 +122,7 @@ namespace Threading.C2_TPL_FinStockData
     /// <returns></returns>
     private static StockData GetDataFromInternet(string symbol, int numYearsOfHistory)
     {
-      //
       // Start tasks to retrieve data from each site:
-      //
       Task<StockData> t_yahoo = Task.Factory.StartNew(() =>
       {
         StockData yahoo = GetDataFromYahoo(symbol, numYearsOfHistory);
@@ -154,9 +144,7 @@ namespace Threading.C2_TPL_FinStockData
       }
       );
 
-      //
       // Now wait for the first one to return data:
-      //
       Task<StockData>[] tasks = { t_yahoo, t_nasdaq, t_msn };
       int index = Task.WaitAny(tasks);
 
@@ -174,11 +162,8 @@ namespace Threading.C2_TPL_FinStockData
     {
       System.Diagnostics.Debug.WriteLine("Yahoo initiated on thread {0}.", Thread.CurrentThread.ManagedThreadId);
 
-      //
       // finance.yahoo.com, data format:
-      //
       //   Date (YYYY-MM-DD),Open,High,Low,Close,Volume,Adj Close
-      //
       DateTime today = DateTime.Now;
 
       string url = string.Format("http://ichart.finance.yahoo.com/table.csv?s={0}&d={1}&e={2}&f={3}&g=d&a={1}&b={2}&c={4}&ignore=.csv",
@@ -188,16 +173,12 @@ namespace Threading.C2_TPL_FinStockData
         today.Year,
         today.Year - numYearsOfHistory);
 
-      //
       // Fire off web request:
-      //
       HttpWebRequest WebRequestObject = (HttpWebRequest)HttpWebRequest.Create(url);
       WebRequestObject.Timeout = 15 * 1000 /*15 secs*/;
       WebResponse Response = WebRequestObject.GetResponse();
 
-      //
       // We have response, now open data stream and process the data:
-      //
       System.Diagnostics.Debug.WriteLine("Yahoo processed on thread {0}.", Thread.CurrentThread.ManagedThreadId);
 
       string dataSource = string.Format("http://finance.yahoo.com, daily Adj Close, {0} years", numYearsOfHistory);
@@ -218,24 +199,17 @@ namespace Threading.C2_TPL_FinStockData
     {
       System.Diagnostics.Debug.WriteLine("Nasdaq initiated on thread {0}.", Thread.CurrentThread.ManagedThreadId);
 
-      //
       // nasdaq.com, data format:
-      //
       //   Date (MM-DD-YYYY)\tOpen\tHigh\tLow\tClose\tVolume\t
-      //
       string url = string.Format("http://charting.nasdaq.com/ext/charts.dll?2-1-14-0-0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0|0,0,0,0,0-5120-03NA000000{0}-&SF:4|5-WD=539-HT=395--XXCL-",
         symbol);
 
-      //
       // Fire off web request:
-      //
       HttpWebRequest WebRequestObject = (HttpWebRequest)HttpWebRequest.Create(url);
       WebRequestObject.Timeout = 15 * 1000 /*15 secs*/;
       WebResponse Response = WebRequestObject.GetResponse();
 
-      //
       // We have response, now open data stream and process the data:
-      //
       System.Diagnostics.Debug.WriteLine("Nasdaq processed on thread {0}.", Thread.CurrentThread.ManagedThreadId);
 
       string dataSource = string.Format("http://nasdaq.com, daily Close, {0} years", numYearsOfHistory);
@@ -258,26 +232,18 @@ namespace Threading.C2_TPL_FinStockData
     {
       System.Diagnostics.Debug.WriteLine("MSN initiated on thread {0}.", Thread.CurrentThread.ManagedThreadId);
 
-      //
       // MSN, data format:
-      //
       //   Date (MM-DD-YYYY),Open,High,Low,Close,Volume
-      //
       // NOTE: MSN only provides one year of historical data, and only by week.
-      //
       string url = string.Format("http://moneycentral.msn.com/investor/charts/chartdl.aspx?C1=0&C2=1&height=258&width=612&CE=0&symbol={0}&filedownloadbt.x=1",
         symbol);
 
-      //
       // Fire off web request:
-      //
       HttpWebRequest WebRequestObject = (HttpWebRequest)HttpWebRequest.Create(url);
       WebRequestObject.Timeout = 15 * 1000 /*15 secs*/;
       WebResponse Response = WebRequestObject.GetResponse();
 
-      //
       // We have response, now open data stream and process the data:
-      //
       System.Diagnostics.Debug.WriteLine("MSN processed on thread {0}.", Thread.CurrentThread.ManagedThreadId);
 
       string dataSource = "http://moneycentral.msn.com, weekly Close, 1 year";
@@ -301,9 +267,7 @@ namespace Threading.C2_TPL_FinStockData
     /// <returns></returns>
     private static List<decimal> GetData(WebResponse Response, char[] separators, int dataIndex)
     {
-      //
       // Open data stream and download/read the data:
-      //
       try
       {
         List<decimal> prices = new List<decimal>();
@@ -312,34 +276,26 @@ namespace Threading.C2_TPL_FinStockData
         {
           using (StreamReader Reader = new StreamReader(WebStream))
           {
-
-            //
-            // Read data stream:
-            //
+             // Read data stream:
             while (!Reader.EndOfStream)
             {
               string record = Reader.ReadLine();
               string[] tokens = record.Split(separators);
 
-              //
               // valid records start with a date:
-              //
               DateTime date;
               decimal data;
 
               if (DateTime.TryParse(tokens[0], out date))
                 if (Decimal.TryParse(tokens[dataIndex], out data))
                   prices.Add(data);
-            }//while
+            }
 
-          }//using--Reader
-        }//using--WebStream
+          }
+        }
 
-        //
         // return list of historical prices:
-        //
         return prices;
-
       }
       finally
       {
@@ -352,5 +308,5 @@ namespace Threading.C2_TPL_FinStockData
       }
     }
 
-  }//class
-}//namespace
+  }
+}

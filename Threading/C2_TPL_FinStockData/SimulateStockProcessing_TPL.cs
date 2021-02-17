@@ -24,14 +24,11 @@ using C2_TPL_FinStockData;
 // site that returns.
 //
 // Usage:  StockHistory.exe  msft
-//
-
 
 namespace Threading.C2_TPL_FinStockData
 {
   public class SimulateStockProcessing_TPL
   {
-
     public static void StartMethod(string[] args)
     {
       String version, platform, symbol;
@@ -39,9 +36,7 @@ namespace Threading.C2_TPL_FinStockData
 
       ProcessCmdLineArgs(args, out version, out platform, out symbol, out numYearsOfHistory);
 
-      //
       // Process stock symbol:
-      //
       ProcessStockSymbol(symbol, numYearsOfHistory);
 
       Console.WriteLine();
@@ -93,11 +88,10 @@ namespace Threading.C2_TPL_FinStockData
           foreach (decimal value in data.Prices)
             sum += Math.Pow(Convert.ToDouble(value - l_avg), 2.0);
 
-          //
           // NOTE: want to test exception handling?  Uncomment the following to trigger
           // divide-by-zero, and notice you get 2 task exceptions, one from this code
           // and one from the continuation task (stderr) that fails because we fail.
-          //
+
           //int abc = 0;
           //int x = 1000 / abc;
 
@@ -111,13 +105,11 @@ namespace Threading.C2_TPL_FinStockData
         }
         );
 
-        //
         // Wait and harvest results when done:
-        //
         // NOTE: even though WaitAll is not required for correctness (calls to .Result do
         // an implicit .Wait), we use WaitAll for efficiency so that we process tasks in
         // order as they finish (versus an arbitrary order implied by calls to .Result).
-        //
+
         Task.WaitAll(new Task[] { T_min, T_max, T_avg, T_stddev, T_stderr });
 
         decimal min = T_min.Result;
@@ -126,9 +118,7 @@ namespace Threading.C2_TPL_FinStockData
         double stddev = T_stddev.Result;
         double stderr = T_stderr.Result;
 
-        //
         // Output:
-        //
         Console.WriteLine();
         Console.WriteLine("** {0} **", symbol);
         Console.WriteLine("   Data source:  '{0}'", data.DataSource);
@@ -150,7 +140,6 @@ namespace Threading.C2_TPL_FinStockData
     /// <summary>
     /// Processes command-line arguments, and outputs to the user.
     /// </summary>
-    /// 
     static void ProcessCmdLineArgs(string[] args, out string version, out string platform, out string symbol, out int numYearsOfHistory)
     {
 #if DEBUG
@@ -192,7 +181,7 @@ namespace Threading.C2_TPL_FinStockData
         {
           symbol = arg;
         }
-      }//for
+      }
 
       if (symbol == "")
       {
@@ -218,5 +207,5 @@ namespace Threading.C2_TPL_FinStockData
       Console.WriteLine("   Internet access?  {0}", DownloadData_TPL.IsConnectedToInternet());
     }
 
-  }//class
-}//namespace
+  }
+}
