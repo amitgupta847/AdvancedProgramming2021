@@ -1,6 +1,7 @@
 ﻿using System;
 using Threading.Basics;
 using Threading.C1_MultiThreading;
+using Threading.C2_TPL_FinStockData;
 
 namespace Threading
 {
@@ -13,7 +14,11 @@ namespace Threading
       //AutoResetEvent_Ex1.StartMethod();
       //AutoResetEvent_Ex2.StartMethod();
 
-      Task_Ex1.StartMethod();
+
+      PlayWithFinStockData(args);
+
+
+      // Task_Ex1.StartMethod();
       //AsyncAwait.StartMethod();
 
       Console.WriteLine("Press any key to quit!");
@@ -21,6 +26,9 @@ namespace Threading
     }
 
 
-    
+    private static void PlayWithFinStockData(string[] args)
+    {
+      SimulateStockData_Seq.StartMethod(args);
+    }
   }
 }

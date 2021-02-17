@@ -9,4 +9,19 @@
     <Folder Include="C1_MultiThreading\NewFolder\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="C2_TPL_FinStockData\cache\aapl.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="C2_TPL_FinStockData\cache\goog.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="C2_TPL_FinStockData\cache\intc.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="C2_TPL_FinStockData\cache\msft.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
