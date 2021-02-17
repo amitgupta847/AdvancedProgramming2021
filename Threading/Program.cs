@@ -28,7 +28,10 @@ namespace Threading
 
     private static void PlayWithFinStockData(string[] args)
     {
-      SimulateStockData_Seq.StartMethod(args);
+      //SimulateStockData_Seq.StartMethod(args);
+      // SimulateStockData_AsyncOldWay.StartMethod(args);
+
+      SimulateStockProcessing_TPL.StartMethod(args);
     }
   }
 }

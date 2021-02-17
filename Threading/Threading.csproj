@@ -7,6 +7,7 @@
 
   <ItemGroup>
     <Folder Include="C1_MultiThreading\NewFolder\" />
+    <Folder Include="C2_TPL_FinStockData\cache\NewFolder\" />
   </ItemGroup>
 
   <ItemGroup>
