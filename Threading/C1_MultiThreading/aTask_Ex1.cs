@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Threading.C1_MultiThreading
 {
@@ -168,7 +169,7 @@ namespace Threading.C1_MultiThreading
          else if (t1.IsCompleted)
            Console.WriteLine("I am completed succesfully");
        });
-      
+
         t1.Wait();  // if there was any exception in the method that task performed, that will be wrapped in Aggregate exception and will be throw at this point
 
       }
@@ -176,7 +177,7 @@ namespace Threading.C1_MultiThreading
       {
         Console.WriteLine(ex.GetType().ToString());
         Console.WriteLine(ex.Message);
-        
+
         //Here instead of general Exception, you could configure to recieve only AggregateException and flatten it to see all the exceptions in it.
       }
     }
@@ -231,13 +232,37 @@ namespace Threading.C1_MultiThreading
     //Nested and child tasks
     private static void NestedTasks()
     {
-     Task.Factory.StartNew(() => {
-
-        Task nested= Task.Factory.StartNew(()=> Console.WriteLine("hello i am child task"));
+      Task.Factory.StartNew(() =>
+      {
+        Task nested = Task.Factory.StartNew(() => Console.WriteLine("hello i am child task"));
       }).Wait();
 
 
-     // parent.Wait();
+      // parent.Wait();
+    }
+
+    //a way to parallelize the work
+    //Below example shows how the main task is getting the files from directory and then passing that file to each new child task in order to process each one individually, rather sequentially.
+    public Task ImportXMLFileAsync(string dataDirectory, CancellationToken cts)
+    {
+      Task t = Task.Factory.StartNew(() =>
+      {
+        foreach (FileInfo file in new DirectoryInfo(dataDirectory).GetFiles("*.xml"))
+        {
+          string fileToProcess = file.FullName;
+          Task.Factory.StartNew(() =>
+          {
+
+            cts.ThrowIfCancellationRequested();
+            XElement doc = XElement.Load(fileToProcess);
+            //InternalProcessXml(doc, cts);
+          }, TaskCreationOptions.AttachedToParent);
+        }
+
+      }, cts);
+
+      
+      return t;
     }
 
   }
