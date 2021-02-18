@@ -71,7 +71,7 @@ namespace Threading.C2_TPL_FinStockData
       // simulate a web delay:
       Random random = new Random();
       int secs = random.Next(3);  // returns 0..2:
-      secs += 3;  // 3..5:
+      secs += 0; //amit i changed to 0    3;  // 3..5:
 
       Thread.Sleep(secs * 1000);  // delay...
 

@@ -92,15 +92,20 @@ namespace Threading.C2_TPL_FinStockData
           // divide-by-zero, and notice you get 2 task exceptions, one from this code
           // and one from the continuation task (stderr) that fails because we fail.
 
-          //int abc = 0;
-          //int x = 1000 / abc;
+          // int abc = 0;
+          // int x = 1000 / abc;
 
           return Math.Sqrt(sum / N);
         }
         );
 
+
+
         Task<double> T_stderr = T_stddev.ContinueWith((antecedent) =>
         {
+          //You can uncomment below two lines to see the behavior of exception handling
+          //int abc = 0;
+          //int x = 1000 / abc;
           return antecedent.Result / Math.Sqrt(N);
         }
         );
@@ -110,7 +115,35 @@ namespace Threading.C2_TPL_FinStockData
         // an implicit .Wait), we use WaitAll for efficiency so that we process tasks in
         // order as they finish (versus an arbitrary order implied by calls to .Result).
 
-        Task.WaitAll(new Task[] { T_min, T_max, T_avg, T_stddev, T_stderr });
+        try
+        {
+          //this is also one way to run any code incase the task has been faulted. (mean there was an exception)
+          //here we are composing the task with an continuation incase task becomes faulted.
+          T_stderr.ContinueWith((task) =>
+          {
+            Console.WriteLine("i am having error. " + task.Exception.Message);
+          }, TaskContinuationOptions.OnlyOnFaulted);
+
+          Task.WaitAll(new Task[] { T_min, T_max, T_avg, T_stddev, T_stderr });
+
+      
+        }
+        catch (AggregateException aeg)
+        {
+          Console.WriteLine(aeg.Message);
+        }
+        catch (Exception ex)
+        {
+          Console.WriteLine(ex.Message);
+        }
+
+        //Task[] all = new Task[] { T_min, T_max, T_avg, T_stddev, T_stderr };
+
+        //Task.Factory.ContinueWhenAll( all,(t)=>{
+
+        //  Console.WriteLine(t.Length);
+        //  Console.WriteLine("All Done");
+        //});
 
         decimal min = T_min.Result;
         decimal max = T_max.Result;
