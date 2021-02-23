@@ -37,7 +37,20 @@ namespace AppStore
               options.UseInMemoryDatabase("Shop"));
 
       services.AddControllers();
-     
+
+
+      //Enabling CORS:
+      services.AddCors(options =>
+      {
+        options.AddDefaultPolicy(builder =>
+        {
+          builder.WithOrigins("https://localhost:44365") //allowing only specific client, but you can configure it based on your needs
+                 .AllowAnyHeader()
+                 .AllowAnyMethod();
+        });
+      });
+
+
       //Amit- commented this one,  inorder to use swagger with multiple versions
       //services.AddSwaggerGen(c =>
       //{
@@ -84,14 +97,15 @@ namespace AppStore
                 $"/swagger/{description.GroupName}/swagger.json",
                 description.GroupName.ToUpperInvariant());
           }
-        }
-              );
+        } );
 
       }
 
       app.UseHttpsRedirection();
 
       app.UseRouting();
+
+      app.UseCors();
 
       app.UseAuthorization();
 
