@@ -10,15 +10,18 @@ using System.Threading.Tasks;
 
 namespace AppStore.Controllers
 {
+  [ApiVersion("1.0")]
   [ApiController]
-  [Route("[controller]")]
-  public class ProductsController : ControllerBase
+  //[Route("v{v:apiVersion}/products")]
+  [Route("products")]
+  //[Route("v{v:apiVersion}/[controller]")]
+  public class ProductsV1_0Controller : ControllerBase
   {
 
     private readonly ILogger<WeatherForecastController> _logger;
     private readonly ShopContext _shopContext;
 
-    public ProductsController(ILogger<WeatherForecastController> logger, ShopContext shopContext)
+    public ProductsV1_0Controller(ILogger<WeatherForecastController> logger, ShopContext shopContext)
     {
       _logger = logger;
       this._shopContext = shopContext;
