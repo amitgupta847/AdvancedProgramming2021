@@ -43,10 +43,10 @@ namespace AppStore
       services.AddAuthentication("Bearer")
         .AddJwtBearer("Bearer", options =>
         {
-          options.Authority = "http://localhost:51959";
+          options.Authority = "http://localhost:51959";   
           options.RequireHttpsMetadata = false;
 
-          options.Audience = "hps-api";
+          options.Audience = "hps-api";  //Unique name for client which is acting as audience
 
           options.TokenValidationParameters =
                   new Microsoft.IdentityModel.Tokens.TokenValidationParameters

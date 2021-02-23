@@ -28,7 +28,7 @@ namespace Store.IdentityServer
                 {
                     new Client
                     {
-                        ClientId = "client",
+                        ClientId = "client",  //unique id of the client
                         AllowedScopes = { "hps-api" },
 
                         AllowedGrantTypes = GrantTypes.ClientCredentials,

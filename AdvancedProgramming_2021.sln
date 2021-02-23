@@ -38,6 +38,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StoreWebClient", "REST\C1_R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.IdentityServer", "REST\C1_RestAPI\Store.IdentityServer\Store.IdentityServer.csproj", "{FCA9EB59-4542-4EB2-8488-B791684344D1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.SecureConsoleClient", "REST\C1_RestAPI\Store.SecureConsoleClient\Store.SecureConsoleClient.csproj", "{9FA06B6D-7352-4C7A-A118-26804936DA17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -156,6 +158,18 @@ Global
 		{FCA9EB59-4542-4EB2-8488-B791684344D1}.Release|x64.Build.0 = Release|Any CPU
 		{FCA9EB59-4542-4EB2-8488-B791684344D1}.Release|x86.ActiveCfg = Release|Any CPU
 		{FCA9EB59-4542-4EB2-8488-B791684344D1}.Release|x86.Build.0 = Release|Any CPU
+		{9FA06B6D-7352-4C7A-A118-26804936DA17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FA06B6D-7352-4C7A-A118-26804936DA17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FA06B6D-7352-4C7A-A118-26804936DA17}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9FA06B6D-7352-4C7A-A118-26804936DA17}.Debug|x64.Build.0 = Debug|Any CPU
+		{9FA06B6D-7352-4C7A-A118-26804936DA17}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9FA06B6D-7352-4C7A-A118-26804936DA17}.Debug|x86.Build.0 = Debug|Any CPU
+		{9FA06B6D-7352-4C7A-A118-26804936DA17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FA06B6D-7352-4C7A-A118-26804936DA17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FA06B6D-7352-4C7A-A118-26804936DA17}.Release|x64.ActiveCfg = Release|Any CPU
+		{9FA06B6D-7352-4C7A-A118-26804936DA17}.Release|x64.Build.0 = Release|Any CPU
+		{9FA06B6D-7352-4C7A-A118-26804936DA17}.Release|x86.ActiveCfg = Release|Any CPU
+		{9FA06B6D-7352-4C7A-A118-26804936DA17}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -170,6 +184,7 @@ Global
 		{46A592A3-A717-4DCB-860F-EAAE7BA7EB80} = {D1F8BFDB-6B1D-4C41-9719-C7EBD812FEC2}
 		{8747562B-B4F7-4A65-B51D-464E7D6AF9C8} = {D1F8BFDB-6B1D-4C41-9719-C7EBD812FEC2}
 		{FCA9EB59-4542-4EB2-8488-B791684344D1} = {D1F8BFDB-6B1D-4C41-9719-C7EBD812FEC2}
+		{9FA06B6D-7352-4C7A-A118-26804936DA17} = {D1F8BFDB-6B1D-4C41-9719-C7EBD812FEC2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {65C19044-9F1D-44DB-ADD0-027B26F69B5A}
