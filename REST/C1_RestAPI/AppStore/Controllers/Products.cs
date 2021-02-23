@@ -38,6 +38,14 @@ namespace AppStore.Controllers
           prod.Price <= queryParameters.MaxPrice);
       }
 
+
+      if (!string.IsNullOrEmpty(queryParameters.SearchTerm))
+      {
+        products = products.Where(p => p.Sku.ToLower().Contains(queryParameters.SearchTerm.ToLower()) ||
+                                       p.Name.ToLower().Contains(queryParameters.SearchTerm.ToLower()));
+      }
+
+
       if (!string.IsNullOrEmpty(queryParameters.Sku))
       {
         products = products.Where(prod => prod.Sku.Equals(queryParameters.Sku));
@@ -65,7 +73,7 @@ namespace AppStore.Controllers
     }
 
     [HttpGet("{id:int}")]  // if user doesn't pass id as int he will get not found resource as error - 404. 
-    public async Task<ActionResult<Product>> Get(int id)
+    public async Task<ActionResult<Product>> GetProduct(int id)
     {
       var product = await _shopContext.Products.FindAsync(id);
 
@@ -74,5 +82,76 @@ namespace AppStore.Controllers
 
       return Ok(product);
     }
+
+    [HttpPost]
+    public async Task<ActionResult<Product>> PostProduct([FromBody] Product product)
+    {
+      _shopContext.Products.Add(product);
+      await _shopContext.SaveChangesAsync();
+      return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+    }
+
+
+    [HttpPut("{id}")]
+    public async Task<ActionResult> PutProduct([FromRoute] int id, [FromBody] Product product)
+    {
+      if (id != product.Id)
+        return BadRequest();
+
+      _shopContext.Entry(product).State = EntityState.Modified;
+
+      try
+      {
+        await _shopContext.SaveChangesAsync();
+      }
+      catch (DbUpdateConcurrencyException ex)//What if product is already deleted...
+      {
+        if (_shopContext.Products.Find(id) == null)
+          return NotFound();
+
+        throw;
+      }
+
+      return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<ActionResult<Product>> DeleteProduct(int id)
+    {
+      var product = await _shopContext.Products.FindAsync(id);
+
+      if (product == null)
+        return NotFound();
+
+      _shopContext.Products.Remove(product);
+      await _shopContext.SaveChangesAsync();
+
+      return product;
+    }
+
+
+    [HttpPost]
+    [Route("Delete")]
+    public async Task<IActionResult> DeleteMultiple([FromQuery] int[] ids)
+    {
+      var products = new List<Product>();
+      foreach (var id in ids)
+      {
+        var product = await _shopContext.Products.FindAsync(id);
+
+        if (product == null)
+        {
+          return NotFound();
+        }
+
+        products.Add(product);
+      }
+
+      _shopContext.Products.RemoveRange(products);
+      await _shopContext.SaveChangesAsync();
+
+      return Ok(products);
+    }
   }
+
 }
