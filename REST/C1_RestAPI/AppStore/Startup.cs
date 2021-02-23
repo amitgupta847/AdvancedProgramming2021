@@ -38,6 +38,25 @@ namespace AppStore
 
       services.AddControllers();
 
+      //use identity server for authentication and authorization
+
+      services.AddAuthentication("Bearer")
+        .AddJwtBearer("Bearer", options =>
+        {
+          options.Authority = "http://localhost:51959";
+          options.RequireHttpsMetadata = false;
+
+          options.Audience = "hps-api";
+
+          options.TokenValidationParameters =
+                  new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+            {
+              ValidateAudience = false
+            };
+
+        });
+
+
 
       //Enabling CORS:
       services.AddCors(options =>
@@ -106,7 +125,8 @@ namespace AppStore
       app.UseRouting();
 
       app.UseCors();
-
+     
+      app.UseAuthentication();
       app.UseAuthorization();
 
       app.UseEndpoints(endpoints =>

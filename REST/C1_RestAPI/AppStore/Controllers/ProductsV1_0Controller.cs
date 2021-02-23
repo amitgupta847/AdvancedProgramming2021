@@ -1,5 +1,6 @@
 ﻿using AppStore.Classes;
 using AppStore.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 namespace AppStore.Controllers
 {
   [ApiVersion("1.0")]
+  [Authorize]
   [ApiController]
   //[Route("v{v:apiVersion}/products")]
   [Route("products")]
