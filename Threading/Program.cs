@@ -2,6 +2,7 @@
 using Threading.Basics;
 using Threading.C1_MultiThreading;
 using Threading.C2_TPL_FinStockData;
+using Threading.Educative_Concurrency;
 
 namespace Threading
 {
@@ -15,7 +16,11 @@ namespace Threading
       //AutoResetEvent_Ex2.StartMethod();
 
 
-      PlayWithFinStockData(args);
+      //Educative
+      Educative.StartMethod();
+
+
+      //PlayWithFinStockData(args);
 
 
       // Task_Ex1.StartMethod();
