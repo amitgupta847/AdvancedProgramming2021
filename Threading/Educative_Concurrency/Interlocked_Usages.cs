@@ -83,7 +83,7 @@ namespace Threading.Educative_Concurrency
       int i = 0;
       while (i < numberOfTimes)
       {
-        while (Interlocked.Read(ref flag) == 0)  // keep in lool if value is 1
+        while (Interlocked.Read(ref flag) == 0)  // keep in lool if value is 0
         {
         }
         Console.WriteLine("Pong");
@@ -91,9 +91,6 @@ namespace Threading.Educative_Concurrency
         Thread.Sleep(1000);
         i++;
       }
-
-
-
     }
 
   }
@@ -122,8 +119,8 @@ namespace Threading.Educative_Concurrency
         {
           for (long k = 0; k < 100000; k++)
           {
-            j++;
-            //Interlocked.Add(ref j, 1);
+            //j++;
+            Interlocked.Add(ref j, 1);
           }
         });
       }

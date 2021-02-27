@@ -12,8 +12,12 @@ namespace Threading.Educative_Concurrency
     {
 
       // Mutex_Usages.StartMethod();
-      
-      Interlocked_Usages.StartMethod();
+
+      // Interlocked_Usages.StartMethod();
+
+      EventWaitHandle_Usage.StartMethod();
+
+      //AutoResetEvent_PingPong.StartMethod();
     }
 
   }
