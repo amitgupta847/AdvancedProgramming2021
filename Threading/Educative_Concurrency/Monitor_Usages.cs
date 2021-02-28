@@ -225,7 +225,7 @@ namespace Threading.Educative_Concurrency.Monitor1
   }
 
 
-  //Ping Pong Using Interlocked
+  //Ping Pong Using Monitors
   public class PingPong
   {
     bool isPing = true;

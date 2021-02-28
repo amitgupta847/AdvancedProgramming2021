@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Threading.Educative_Concurrency.Lock1;
 using Threading.Educative_Concurrency.Monitor1;
 
 namespace Threading.Educative_Concurrency
@@ -18,9 +19,11 @@ namespace Threading.Educative_Concurrency
 
       // EventWaitHandle_Usage.StartMethod();
 
-      //AutoResetEvent_PingPong.StartMethod();
+      // AutoResetEvent_PingPong.StartMethod();
 
-      Monitor_Usages.StartMethod();
+      // Monitor_Usages.StartMethod();
+
+      Lock_Usages.StartMethod();
     }
 
   }
