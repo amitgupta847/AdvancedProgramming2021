@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Threading.Educative_Concurrency.Monitor1;
 
 namespace Threading.Educative_Concurrency
 {
@@ -15,9 +16,11 @@ namespace Threading.Educative_Concurrency
 
       // Interlocked_Usages.StartMethod();
 
-      EventWaitHandle_Usage.StartMethod();
+      // EventWaitHandle_Usage.StartMethod();
 
       //AutoResetEvent_PingPong.StartMethod();
+
+      Monitor_Usages.StartMethod();
     }
 
   }
