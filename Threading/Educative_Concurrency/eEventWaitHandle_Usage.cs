@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Threading.Educative_Concurrency
 {
-  public class EventWaitHandle_Usage
+  public class eEventWaitHandle_Usage
   {
     public static void StartMethod()
     {

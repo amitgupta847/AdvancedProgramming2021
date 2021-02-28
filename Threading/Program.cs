@@ -17,7 +17,7 @@ namespace Threading
 
 
       //Educative
-      Educative.StartMethod();
+      aEducative.StartMethod();
 
 
       //PlayWithFinStockData(args);

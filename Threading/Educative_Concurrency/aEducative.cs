@@ -8,7 +8,7 @@ using Threading.Educative_Concurrency.Monitor1;
 
 namespace Threading.Educative_Concurrency
 {
-  public class Educative
+  public class aEducative
   {
     public static void StartMethod()
     {
@@ -23,8 +23,10 @@ namespace Threading.Educative_Concurrency
 
       // Monitor_Usages.StartMethod();
 
-      Lock_Usages.StartMethod();
+      // Lock_Usages.StartMethod();
+      MemoryModel_Usages.StartMethod();
+
     }
 
-  }
+}
 }

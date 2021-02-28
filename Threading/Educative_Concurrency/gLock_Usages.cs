@@ -34,9 +34,6 @@ namespace Threading.Educative_Concurrency.Lock1
       Thread ping = new Thread(() => { Ping(); });
       Thread pong = new Thread(() => { Pong(); });
 
-      // ping.IsBackground = false;     // incase you dont use Join, then your main thread will exit without printing output for these threads, because bydefault these threads are background
-      // pong.IsBackground = false;
-
       ping.Start();
       pong.Start();
 
