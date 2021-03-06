@@ -11,7 +11,9 @@ namespace Threading.Educative_Concurrency.InterviewProblems
 
     public static void StartMethod()
     {
-      new P1_BoundedBuffer().run();
+      //new P1_BoundedBuffer().run();
+
+      new P7_UnisexBathroom().run();
 
     }
   }
