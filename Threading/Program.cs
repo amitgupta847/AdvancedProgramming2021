@@ -3,6 +3,7 @@ using Threading.Basics;
 using Threading.C1_MultiThreading;
 using Threading.C2_TPL_FinStockData;
 using Threading.Educative_Concurrency;
+using Threading.Educative_Concurrency.InterviewProblems;
 
 namespace Threading
 {
@@ -17,7 +18,8 @@ namespace Threading
 
 
       //Educative
-      aEducative.StartMethod();
+      // aEducative.StartMethod();
+      InterviewProblemsStarter.StartMethod();
 
 
       //PlayWithFinStockData(args);
