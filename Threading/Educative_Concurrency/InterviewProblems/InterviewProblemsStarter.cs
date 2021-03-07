@@ -13,7 +13,11 @@ namespace Threading.Educative_Concurrency.InterviewProblems
     {
       //new P1_BoundedBuffer().run();
 
-      new P7_UnisexBathroom().run();
+      new P4_ImplementingSemaphore().run();
+
+      // new P7_UnisexBathroom().run();
+
+
 
     }
   }

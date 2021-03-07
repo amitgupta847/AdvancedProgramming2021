@@ -51,7 +51,6 @@ namespace Threading.Educative_Concurrency.InterviewProblems
       male6.Join();
 
       Console.WriteLine(String.Format("Employees in bathroom at the end {0}", bathroom.getEmpsInBathroom()));
-
     }
   }
 
@@ -282,4 +281,5 @@ namespace Threading.Educative_Concurrency.InterviewProblems
 
     //If you look at the program output, you'd notice that the number of current employees in the bathroom is printed out to be greater than 3 at times even though the maximum allowed employees in the bathroom are 3. This is just an outcome of how the code is structured, read notes for an explanation.
   }
+
 }
