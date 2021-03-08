@@ -12,9 +12,13 @@ namespace Threading.Educative_Concurrency
   {
     public static void StartMethod()
     {
+      // InterviewProblemsStarter.StartMethod();
+
 
       // ThreadsInterruptAbort.StartMethod();
-       Mutex_Usages.StartMethod();
+      // Mutex_Usages.StartMethod();
+
+      Semaphore_Usages.StartMethod();
 
       // Interlocked_Usages.StartMethod();
 
@@ -25,10 +29,13 @@ namespace Threading.Educative_Concurrency
       // Monitor_Usages.StartMethod();
 
       // Lock_Usages.StartMethod();
-      
-        //MemoryModel_Usages.StartMethod();
 
+      // MemoryModel_Usages.StartMethod();
+
+
+
+      //
     }
 
-}
+  }
 }
