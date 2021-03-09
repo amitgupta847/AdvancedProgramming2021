@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OOPs_And_DesignPatterns.cBehavioral.VisitorPattern.AirCraftExample;
+using OOPs_And_DesignPatterns.cBehavioral.VisitorPattern.AirCraftExample2;
+using System;
 
 namespace OOPs_And_DesignPatterns
 {
@@ -6,7 +8,15 @@ namespace OOPs_And_DesignPatterns
   {
     static void Main(string[] args)
     {
-      Console.WriteLine("Hello World!");
+
+
+
+      //Behavioral
+      //AirCraft_V1_AsVisitorPattern.StartMethod();
+      AirCraft_V2_AsVisitorPattern.StartMethod();
+
+      Console.WriteLine("Design pattern testing done!");
+      Console.ReadLine();
     }
   }
 }

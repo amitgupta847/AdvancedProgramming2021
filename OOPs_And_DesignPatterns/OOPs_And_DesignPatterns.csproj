@@ -5,4 +5,13 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="aCreational\aBuilder\" />
+    <Folder Include="aCreational\bSingleton\" />
+    <Folder Include="aCreational\cPrototype\" />
+    <Folder Include="aCreational\dFactoryMethodPattern\" />
+    <Folder Include="aCreational\eAbstractFactoryPattern\" />
+    <Folder Include="bStructural\" />
+  </ItemGroup>
+
 </Project>
