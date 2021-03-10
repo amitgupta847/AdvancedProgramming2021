@@ -1,65 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="OOPs_And_DesignPatterns.cBehavioral.VisitorPattern.AirCraftExample2.AirCraft_V2_AsVisitorPattern">
+  <Class Name="OOPs_And_DesignPatterns.cBehavioral.VisitorPattern.AirCraftExample3.AirCraft_V3_DoubleDispatcher">
     <Position X="3" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>cBehavioral\VisitorPattern\AirCraftExample\AirCraft_V2_AsVisitorPattern.cs</FileName>
+      <FileName>cBehavioral\VisitorPattern\AirCraftExample\AirCraft_V3_DoubleDispatcher.cs</FileName>
+      <NewMemberFileName>cBehavioral\VisitorPattern\AirCraftExample\AirCraft_V2_AsVisitorPattern.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOPs_And_DesignPatterns.cBehavioral.VisitorPattern.AirCraftExample2.AirCraft">
-    <Position X="10" Y="3.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
-      <FileName>cBehavioral\VisitorPattern\AirCraftExample\AirCraft_V2_AsVisitorPattern.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="OOPs_And_DesignPatterns.cBehavioral.VisitorPattern.AirCraftExample2.MetricsVisitor" BaseTypeListCollapsed="true">
-    <Position X="5" Y="5.5" Width="2.25" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAEAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>cBehavioral\VisitorPattern\AirCraftExample\AirCraft_V2_AsVisitorPattern.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="OOPs_And_DesignPatterns.cBehavioral.VisitorPattern.AirCraftExample2.AirForce">
-    <Position X="6.25" Y="3.5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
-      <FileName>cBehavioral\VisitorPattern\AirCraftExample\AirCraft_V2_AsVisitorPattern.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Field Name="planes" />
-    </ShowAsCollectionAssociation>
-  </Class>
-  <Class Name="OOPs_And_DesignPatterns.cBehavioral.VisitorPattern.AirCraftExample2.F16">
+  <Class Name="OOPs_And_DesignPatterns.cBehavioral.VisitorPattern.AirCraftExample3.F16">
     <Position X="8.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>cBehavioral\VisitorPattern\AirCraftExample\AirCraft_V2_AsVisitorPattern.cs</FileName>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>cBehavioral\VisitorPattern\AirCraftExample\AirCraft_V3_DoubleDispatcher.cs</FileName>
+      <NewMemberFileName>cBehavioral\VisitorPattern\AirCraftExample\AirCraft_V2_AsVisitorPattern.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOPs_And_DesignPatterns.cBehavioral.VisitorPattern.AirCraftExample2.Boeing747">
-    <Position X="11" Y="5.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>cBehavioral\VisitorPattern\AirCraftExample\AirCraft_V2_AsVisitorPattern.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Interface Name="OOPs_And_DesignPatterns.cBehavioral.VisitorPattern.AirCraftExample2.IVisitableAirCraft">
-    <Position X="11.75" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>cBehavioral\VisitorPattern\AirCraftExample\AirCraft_V2_AsVisitorPattern.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="OOPs_And_DesignPatterns.cBehavioral.VisitorPattern.AirCraftExample2.IAirCraftVisitor">
-    <Position X="2.75" Y="5.5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>cBehavioral\VisitorPattern\AirCraftExample\AirCraft_V2_AsVisitorPattern.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
