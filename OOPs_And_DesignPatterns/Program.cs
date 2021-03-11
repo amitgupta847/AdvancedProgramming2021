@@ -16,9 +16,10 @@ namespace OOPs_And_DesignPatterns
 
 
       //Behavioral
+
       //AirCraft_V1_AsCommandPattern.StartMethod()
-      //AirCraft_V1_AsMediatorPattern.StartMethod();
-      aAirCraft_StatePattern.StartMethod();
+      AirCraft_V1_AsMediatorPattern.StartMethod();
+      //aAirCraft_StatePattern.StartMethod();
 
       //AirCraft_V1_AsVisitorPattern.StartMethod();
       //AirCraft_V2_AsVisitorPattern.StartMethod();
