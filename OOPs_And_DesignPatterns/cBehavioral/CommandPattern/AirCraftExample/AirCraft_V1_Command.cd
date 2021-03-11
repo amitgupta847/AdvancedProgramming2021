@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="OOPs_And_DesignPatterns.cBehavioral.MediatorPattern.AirCraftExample.InstrmentPanel">
+  <Class Name="OOPs_And_DesignPatterns.cBehavioral.StatePattern.AirCraftExample.InstrmentPanel">
     <Position X="18" Y="3" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAEAABAAAIAAAAAAgAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -8,7 +8,7 @@
       <NewMemberFileName>cBehavioral\CommandPattern\AirCraftExample\AirCraft_V1_AsCommandPattern.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOPs_And_DesignPatterns.cBehavioral.MediatorPattern.AirCraftExample.LandingGear">
+  <Class Name="OOPs_And_DesignPatterns.cBehavioral.StatePattern.AirCraftExample.LandingGear">
     <Position X="11.75" Y="1" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAEAAAAAAAIAAAAAAAAA=</HashCode>
@@ -16,7 +16,7 @@
       <NewMemberFileName>cBehavioral\CommandPattern\AirCraftExample\AirCraft_V1_AsCommandPattern.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOPs_And_DesignPatterns.cBehavioral.MediatorPattern.AirCraftExample.LandingGearUpCommand" BaseTypeListCollapsed="true">
+  <Class Name="OOPs_And_DesignPatterns.cBehavioral.StatePattern.AirCraftExample.LandingGearUpCommand" BaseTypeListCollapsed="true">
     <Position X="14" Y="4.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -25,7 +25,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="OOPs_And_DesignPatterns.cBehavioral.MediatorPattern.AirCraftExample.LandingGearDownCommand" BaseTypeListCollapsed="true">
+  <Class Name="OOPs_And_DesignPatterns.cBehavioral.StatePattern.AirCraftExample.LandingGearDownCommand" BaseTypeListCollapsed="true">
     <Position X="14" Y="3" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -34,7 +34,7 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="OOPs_And_DesignPatterns.cBehavioral.MediatorPattern.AirCraftExample.AirCraft" Collapsed="true">
+  <Class Name="OOPs_And_DesignPatterns.cBehavioral.StatePattern.AirCraftExample.AirCraft" Collapsed="true">
     <Position X="9.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAEAAAAAAAgAAAAAAAAA=</HashCode>
@@ -42,7 +42,7 @@
       <NewMemberFileName>cBehavioral\CommandPattern\AirCraftExample\AirCraft_V1_AsCommandPattern.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOPs_And_DesignPatterns.cBehavioral.MediatorPattern.AirCraftExample.F16">
+  <Class Name="OOPs_And_DesignPatterns.cBehavioral.StatePattern.AirCraftExample.F16">
     <Position X="8.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
@@ -50,7 +50,7 @@
       <NewMemberFileName>cBehavioral\CommandPattern\AirCraftExample\AirCraft_V1_AsCommandPattern.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="OOPs_And_DesignPatterns.cBehavioral.MediatorPattern.AirCraftExample.Boeing747">
+  <Class Name="OOPs_And_DesignPatterns.cBehavioral.StatePattern.AirCraftExample.Boeing747">
     <Position X="10.25" Y="3.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
@@ -58,7 +58,7 @@
       <NewMemberFileName>cBehavioral\CommandPattern\AirCraftExample\AirCraft_V1_AsCommandPattern.cs</NewMemberFileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="OOPs_And_DesignPatterns.cBehavioral.MediatorPattern.AirCraftExample.ICommand">
+  <Interface Name="OOPs_And_DesignPatterns.cBehavioral.StatePattern.AirCraftExample.ICommand">
     <Position X="18.25" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>

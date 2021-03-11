@@ -12,15 +12,22 @@ namespace OOPs_And_DesignPatterns.cBehavioral.MediatorPattern.AirCraftExample
     {
       Console.WriteLine("Simulation for flight scheduling is going to start.......");
       Console.WriteLine("At any time Press enter to stop the simulation");
-      
+
       Thread.Sleep(5000);
-      
+
       AirCraft_V1_AsMediatorPattern pattern = new AirCraft_V1_AsMediatorPattern();
       Thread th = pattern.StartSimulation();
 
-      
-      Console.ReadLine();
-      pattern.isDone = true;
+      while (true)
+      {
+        var input = Console.ReadLine();
+        if (input == "")
+        {
+          pattern.isDone = true;
+          break;
+        }
+      }
+
       Console.WriteLine("Stopping simulation");
       th.Join();
       Console.WriteLine("Simultion stopped");
